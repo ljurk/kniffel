@@ -1,0 +1,6 @@
+Flask==1.1.1
+Flask-restful
+Flask-WTF==0.14.3
+json2table==1.1.5
+requests==2.22.0
+psycopg2-binary

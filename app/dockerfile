@@ -1,0 +1,16 @@
+FROM python:3.9-slim as base
+
+WORKDIR /opt/api
+EXPOSE 5000
+
+#copy requirements first, so that the package installation will be cached
+COPY requirements.txt .
+
+#install pip packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+#copy all files to workdir
+COPY . .
+ENV API_URL ""
+
+CMD ["python", "main.py"]

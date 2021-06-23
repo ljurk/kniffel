@@ -1,0 +1,224 @@
+<html>
+    <head>
+<style>
+body {
+    background-color: #F0D8A0;
+}
+input[type=submit], input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+a.menu:link, a.menu:visited {
+  background-color: #3CBC8D;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+a.menu:hover, a.menu:active {
+  background-color: #0e9e58;
+}
+
+#extern {
+ background-color: #7966F2;
+}
+
+a#activeButton {
+    border: solid;
+}
+
+input[type=submit]{
+  background-color: #3CBC8D;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
+
+input[type=submit]:hover{
+  background-color: #0e9e58;
+}
+
+
+h2 {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+input[type=text] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: #3CBC8D;
+  font-size: 20px;
+  color: white;
+}
+
+pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+
+table{
+    width: 100%;
+    font-family: arial, sans-serif;
+}
+
+td, th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr:hover{
+    background-color: #ddd;
+}
+
+th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #3CBC8D;
+    color: white;
+}
+
+</style>
+    </head>
+    <body>
+
+        <h2> Kniffel</h2>
+        {% if form is defined %}
+            <form method="POST" action="{{ form.url }}">
+                {{ form.csrf_token }}
+                <table>
+                <tr>
+                    <td>
+                        {{ form.date.label }}
+                    </td>
+                    <td colspan=3>
+                        {{ form.date }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.spiel.label }}
+                    </td>
+                    <td colspan=3>
+                        {{ form.spiel}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.spieler.label }}
+                    </td>
+                    <td colspan=3>
+                        {{ form.spieler}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.games[0].nr1.label }}
+                    </td>
+                    {% for game in form.games %}
+                        <td>
+                            {{ game.form.nr1}}
+                        </td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.games[0].nr2.label }}
+                    </td>
+                    {% for game in form.games %}
+                        <td>
+                            {{ game.form.nr2}}
+                        </td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.games[0].nr3.label }}
+                    </td>
+                    {% for game in form.games %}
+                        <td>
+                            {{ game.form.nr3}}
+                        </td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.games[0].nr4.label }}
+                    </td>
+                    {% for game in form.games %}
+                        <td>
+                            {{ game.form.nr4}}
+                        </td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.games[0].nr5.label }}
+                    </td>
+                    {% for game in form.games %}
+                        <td>
+                            {{ game.form.nr5}}
+                        </td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>
+                        {{ form.games[0].nr6.label }}
+                    </td>
+                    {% for game in form.games %}
+                        <td>
+                            {{ game.form.nr6}}
+                        </td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+
+                {{ form.submit}}
+                    </td>
+                </tr>
+
+            </form>
+            {{ form.errors }}
+            {{ form.message|safe }}
+        {% endif %}
+        {% if table is defined%}
+            {{ table|safe }}
+        {% endif %}
+
+
+    </body>
+</html>
